@@ -8,34 +8,6 @@ It assumes powershell 5 or 7 will be used, to check your version:
 get-host | select-object version
 ```
 
-## First Grab powershell
-
-`https://github.com/PowerShell/PowerShell/releases/tag/v7.1.1
-`
-
-## WSL
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-```
-
-## grab update 
-
-```powershell
-Invoke-WebRequest -uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -OutFile wslupdate.msi -UseBasicParsing
-msiexec.exe /i wslupdate.msi
-wsl --set-default-version 2
-```
-
-## Download Ubuntu 16 for WSL from: https://docs.microsoft.com/en-us/windows/wsl/install-manual
-
-```powershell
-Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
-Add-AppxPackage .\Ubuntu.appx
-```
-
 ## Hyper-V
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -756,3 +728,31 @@ wsman/*.azshci.local
  If you find this event, you can manually create the SPN using setspn.exe . 
  
  If the SPN exists, but CredSSP cannot use Kerberos to validate the identity of the target computer and you still want to allow the delegation of the user credentials to the target computer, use gpedit.msc and look at the following policy: Computer Configuration -> Administrative Templates -> System -> Credentials Delegation -> Allow Fresh Credentials with NTLM-only Server Authentication. Verify that it is enabled and configured with an SPN appropriate for the target computer. For example, for a target computer name "myserver.domain.com", the SPN can be one of the following: WSMAN/myserver.domain.com or WSMAN/*.domain.com. Try the request again after these changes. For more information, see the about_Remote_Troubleshooting Help topic.
+
+## Grab Updated Powershell
+
+`https://github.com/PowerShell/PowerShell/releases/tag/v7.1.1
+`
+
+## WSL
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+## grab update 
+
+```powershell
+Invoke-WebRequest -uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -OutFile wslupdate.msi -UseBasicParsing
+msiexec.exe /i wslupdate.msi
+wsl --set-default-version 2
+```
+
+## Download Ubuntu 16 for WSL from: https://docs.microsoft.com/en-us/windows/wsl/install-manual
+
+```powershell
+Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
+Add-AppxPackage .\Ubuntu.appx
+```

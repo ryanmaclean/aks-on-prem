@@ -28,9 +28,9 @@ system_probe_config:
 ## System Probe Network Configuration ##
 ########################################
 
-# network_config:
+network_config:
   ## @param enabled - boolean - optional - default: true
   ## Set to true to enable the Network Module of the System Probe
   #
-  # enabled: true
+  enabled: true
 

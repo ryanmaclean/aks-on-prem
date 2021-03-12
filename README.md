@@ -2,7 +2,7 @@
 
 ## Requirements
 This guide is written to be installed on a Windows 10 updated host running > 20H2
-It assumes powershell 5 will be used, to check your version: 
+It assumes powershell 5 or 7 will be used, to check your version: 
 
 ```powershell
 get-host | select-object version
